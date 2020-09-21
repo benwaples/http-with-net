@@ -12,6 +12,15 @@ describe('createResponse', () => {
 
   })
 
+  it('should return status code 200 OK and have the body of the request in the body of the response as plain text', async() => {
+    const response = await request(app)
+      .post('/echo')
+      .send('put this text in the body of the response as plain text')
+
+    expect(response.text).toEqual('put this text in the body of the response as plain text')
+    expect(response.statusCode).toEqual(200)
+  })
+
   it('should return HTML document with the title red', async() => {
     const response = await request(app)
       .get('/red')
