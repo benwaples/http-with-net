@@ -18,4 +18,11 @@ describe('createResponse', () => {
 
     expect(response.text).toEqual('<html><body><h1>Red</h1></body></html>')
   })
+
+  it('should return HTML document with the title green', async() => {
+    const response = await request(app)
+      .get('/green')
+
+    expect(response.text).toEqual('<html><body><h1>Green</h1></body></html>')
+  })
 });
